@@ -1,0 +1,9 @@
+<div>
+    <input type="text" placeholder="Search for a song" [(ngModel)]="searchTerm">
+    <button (click)="fetchSongDetails(searchTerm)">Search</button>
+  </div>
+  <div *ngIf="artist && albumCover">
+    <p>Song Name: {{songName}}</p>
+    <p>Artist: {{ artist }}</p>
+    <img [src]="albumCover" alt="Album Cover" />
+  </div>
