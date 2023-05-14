@@ -1,9 +1,28 @@
-<div>
-    <input type="text" placeholder="Search for a song" [(ngModel)]="searchTerm">
-    <button (click)="fetchSongDetails(searchTerm)">Search</button>
-  </div>
-  <div *ngIf="artist && albumCover">
-    <p>Song Name: {{songName}}</p>
-    <p>Artist: {{ artist }}</p>
-    <img [src]="albumCover" alt="Album Cover" />
-  </div>
+<div class="container">
+    <div class="search-component">
+        <input type="text" placeholder="Search for a song" [(ngModel)]="searchTerm">
+        <button (click)="fetchSongDetails(searchTerm)">Search</button>
+        <button (click)="addSongToList()">Add to list</button>
+        <div *ngIf="artist && albumCover">
+            <div class="track-container">
+                <img [src]="albumCover" alt="Album Cover" class="album-cover" />
+                <div class="track-info">
+                    <p>{{songName}}</p>
+                    <p>{{ artist }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="song-list">
+        <h2>Song List</h2>
+        <div *ngFor="let song of songs; trackBy: trackBySongTitle">
+            <div class="track-container">
+                <img [src]="song.albumCover" alt="Album Cover" class="album-cover" />
+                <div class="track-info">
+                    <p>{{song.songName}}</p>
+                    <p>{{song.artist}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

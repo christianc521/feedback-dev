@@ -13,6 +13,7 @@ export class TestFetchComponent implements OnInit{
   albumCover: string = '';
   searchTerm: string = '';
   accessToken: string = '';
+  songs: any[] = [];
   clientId = '2ee3e6910a654dac86de2886c9aecde1';
   clientSecret = '78e8b2b04c1e458487260a6063202577';
 
@@ -48,5 +49,22 @@ export class TestFetchComponent implements OnInit{
       this.songName = track.name
       this.albumCover = track.album.images.find((img: any) => img.width === 300).url;
     });
+  }
+
+  trackBySongTitle(index: number, song: any): string {
+    return song.songName;
+  }
+
+  addSongToList() {
+    const song = {
+      artist: this.artist,
+      albumCover: this.albumCover,
+      songName: this.songName
+    };
+    // We're using the spread operator to create a new array. 
+    // This ensures that Angular's change detection will recognize the change and update the view.
+    // This will change once Firestore is implemented
+    this.songs = [song, ...this.songs];
+    console.log(this.songs);
   }
 }

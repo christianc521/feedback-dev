@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-component, .song-list {
+    width: 45%; /* you can adjust this as per your needs */
+}
+
+.track-container {
+    display: flex;
+}
+
+.album-cover {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
