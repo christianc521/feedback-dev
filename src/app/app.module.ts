@@ -10,8 +10,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AboutComponent } from './about/about.component';
-import { SettingsComponent } from './settings/settings.component';
 import { ContactComponent } from './contact/contact.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -21,8 +21,8 @@ import { ContactComponent } from './contact/contact.component';
     TestFetchComponent,
     AuthenticationComponent,
     AboutComponent,
-    SettingsComponent,
     ContactComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

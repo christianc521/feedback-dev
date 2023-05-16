@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthenticationComponent } from './authentication.component';
-import { TestFetchComponent } from '../test-fetch/test-fetch.component';
 
 describe('AuthenticationComponent', () => {
   let component: AuthenticationComponent;
