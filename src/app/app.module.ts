@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { TestFetchComponent } from './test-fetch/test-fetch.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { AboutComponent } from './about/about.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -15,6 +19,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   declarations: [
     AppComponent,
     TestFetchComponent,
+    AuthenticationComponent,
+    AboutComponent,
+    SettingsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
