@@ -2,8 +2,10 @@
 
 body {
     background-color: #040F1D;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
-p, h1, h2, h3 {
+p, h1, h2, h3, h4 {
     color: #FFFFFF;
+    font-family: 'Roboto Condensed', sans-serif;
 }
