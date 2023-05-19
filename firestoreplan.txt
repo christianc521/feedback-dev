@@ -1,0 +1,28 @@
+Firestore Database Structure Plan:
+
+Collections:
+- Users
+- Posts
+- Feed
+
+Users Collection:
+- Document Structure:
+  - username: String
+  - email: String
+  - password: String (encrypted)
+  - googleSignIn: Boolean
+
+Posts Collection:
+- Document Structure:
+  - userId: Reference to Users collection
+  - songName: String
+  - description: String
+  - createdAt: Timestamp
+
+Feed Collection:
+- Document Structure:
+  - postId: Reference to Posts collection
+  - userId: Reference to Users collection
+  - songName: String
+  - description: String
+  - createdAt: Timestamp
