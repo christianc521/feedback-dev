@@ -1,1 +1,55 @@
-<p>contact works!</p>
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">How Can We Help?</h1>
+        </div>
+    </div>
+    <div class="container" id="forms">
+        <!-- {{ firstname }} {{ lastname }} {{email}} {{ message}} -->
+        <form (ngSubmit)="submitForm()">
+            <table>
+                <tr>
+                <td>First Name:</td>
+                <td>
+                    <div>
+                    <input type="text" name="FirstName" placeholder="First Name" [(ngModel)] ="firstname">
+                    </div>
+                </td>
+                <td>Last Name:</td>
+                <td>
+                    <div>
+                    <input type="text" name="lastName" placeholder="Last Name" [(ngModel)] ="lastname" />
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td>Email:</td>
+                <td>
+                    <div>
+                    <input type="text" name="email" placeholder="Email" [(ngModel)] ="email" />
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td>Message:</td>
+                <td colspan="3">
+                    <div>
+                    <textarea name="message" cols="21" rows="5" placeholder="Message" [(ngModel)] ="message"></textarea>
+                    </div>
+                </td>
+                </tr>
+                <tr>
+                <td></td>
+                <td colspan="3">
+                    <div class="submit-btn">
+                    <button type="submit">Submit</button>
+                    </div>
+                </td>
+                </tr>
+            </table>
+            </form>
+    </div>
+</section>
+
+<section class="section">
+</section>

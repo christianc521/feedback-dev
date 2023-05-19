@@ -1,0 +1,42 @@
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 100px;
+    color: white;
+}
+
+.hero-body {
+    width: 90%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+table {
+    width: 100%;
+  }
+  
+textarea {
+    resize: vertical;
+    height: 100%;
+  }
+  
+.submit-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+    margin-top: -2em;
+  }
+
+#forms {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+td {
+    padding: 10px;
+}
