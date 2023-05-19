@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -8,10 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./authentication.component.css']
 })
 export class AuthenticationComponent {
-  constructor(private router: Router) { }
+  constructor(private auth: AuthenticationService) { }
+  email: string = ""
+  password: string = ""
+
+// test account 
+// email: torecat275@dekaps.com
+// password: test4321
 
   signIn() {
-    this.router.navigate(['fetch']);
+    this.auth.login(this.email,this.password);
   }
 
 }
