@@ -6,19 +6,22 @@
     </div>
     <div class="container" id="forms">
         <!-- {{ firstname }} {{ lastname }} {{email}} {{ message}} -->
-        <form (ngSubmit)="submitForm()">
+        <form (ngSubmit)="submitForm()" #contactForm="ngForm">
             <table>
                 <tr>
                 <td>First Name:</td>
                 <td>
                     <div>
-                    <input type="text" name="FirstName" placeholder="First Name" [(ngModel)] ="firstname">
+                    <input type="text" name="FirstName" placeholder="First Name" [(ngModel)] ="firstname" #nameInput="ngModel" required>
+                    </div>
+                    <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
+                        First name is required
                     </div>
                 </td>
                 <td>Last Name:</td>
                 <td>
                     <div>
-                    <input type="text" name="lastName" placeholder="Last Name" [(ngModel)] ="lastname" />
+                    <input type="text" name="lastName" placeholder="Last Name" [(ngModel)] ="lastname"/>
                     </div>
                 </td>
                 </tr>
@@ -26,7 +29,10 @@
                 <td>Email:</td>
                 <td>
                     <div>
-                    <input type="text" name="email" placeholder="Email" [(ngModel)] ="email" />
+                    <input type="text" name="email" placeholder="Email" [(ngModel)] ="email" #emailInput="ngModel" required email/>
+                    </div>
+                    <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
+                        Email is required
                     </div>
                 </td>
                 </tr>
@@ -34,7 +40,10 @@
                 <td>Message:</td>
                 <td colspan="3">
                     <div>
-                    <textarea name="message" cols="21" rows="5" placeholder="Message" [(ngModel)] ="message"></textarea>
+                    <textarea name="message" cols="21" rows="5" placeholder="Message" [(ngModel)] ="message" #messageInput="ngModel" required></textarea>
+                    </div>
+                    <div class="help is-error" *ngIf="messageInput.invalid && messageInput.touched">
+                        Message required
                     </div>
                 </td>
                 </tr>
@@ -42,7 +51,7 @@
                 <td></td>
                 <td colspan="3">
                     <div class="submit-btn">
-                    <button type="submit">Submit</button>
+                        <button type="submit" [disabled]="contactForm.invalid">Submit</button>
                     </div>
                 </td>
                 </tr>
