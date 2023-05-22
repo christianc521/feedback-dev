@@ -7,10 +7,25 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService {
 
+  isLoggedin: boolean = false;
+
   constructor(private fireauth: AngularFireAuth, private router : Router) {}
 
-  login(email: string, password : string){
-    this.fireauth.signInWithEmailAndPassword(email,password).then( () => {
+  login(email: string, password: string) {
+    return this.fireauth.signInWithEmailAndPassword(email, password).then(() => {
+      localStorage.setItem('token', 'true');
+      this.isLoggedin = true;
+      console.log("logged in");
+      this.router.navigate(['/fetch']);
+    }, err => {
+      alert('Incorrect Username or Password');
+      this.router.navigate(['/']);
+    });
+  }
+  
+
+  createAccount(email: string, password : string, confirmedPass : string){
+    this.fireauth.createUserWithEmailAndPassword(email,password).then ( () => {
       localStorage.setItem('token','true');
       this.router.navigate(['/fetch']);
     }, err => {
@@ -18,4 +33,16 @@ export class AuthenticationService {
       this.router.navigate(["/"])
     })
   }
+
+  isLoggedIn() {
+    if (localStorage.getItem("token") == null) {
+      this.isLoggedin = false;
+      return this.isLoggedin;
+    }
+    else {
+      return true;
+    }
+  }
 }
+
+
