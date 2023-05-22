@@ -1,12 +1,24 @@
 <div style="text-align:center">
   <img src="assets/logo.png" class="logo">
 </div>
+<div *ngIf = "!account" style="text-align:center">
+<p> Login</p>
 
-<nav>
+<input type="text" placeholder="Email" [(ngModel)]="email">
+<br>
+<br>
+<input type="password" placeholder="Password" [(ngModel)]="password">
+
+
+<button (click)="signIn()">Sign-In</button>
+</div>
+
+
+<nav *ngIf = "account">
   <!-- <a routerLink="" routerLinkActive="active">Login </a> -->
   <a routerLink="/fetch" routerLinkActive="active">Home </a>
   <a routerLink="/about" routerLinkActive="active">About </a>
   <a routerLink="/contact" routerLinkActive="active">Contact </a>
   <a routerLink="/settings" routerLinkActive="active">Settings </a>
 </nav>
-<router-outlet></router-outlet>
+<router-outlet *ngIf = "account"></router-outlet>
