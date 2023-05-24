@@ -1,5 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { switchMap, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test-fetch',
@@ -7,6 +10,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./test-fetch.component.css']
 })
 export class TestFetchComponent implements OnInit{
+  searchCtrl = new FormControl();
+  searchResults$: Observable<any[]>;
   details: string = '';
   artist: string = '';
   songName: string = '';
@@ -19,9 +24,21 @@ export class TestFetchComponent implements OnInit{
 
   constructor(private http: HttpClient) {
     this.getAccessToken();
+    this.searchResults$ = this.searchCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        switchMap(term => this.search(term))
+      );
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.searchResults$ = this.searchCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        switchMap(term => this.search(term))
+      );
+  }
+
 
   getAccessToken() {
     const headers = new HttpHeaders({
@@ -38,17 +55,30 @@ export class TestFetchComponent implements OnInit{
   }
 
 
-  fetchSongDetails(searchTerm: string) {
+  
+  search(term: string): Observable<any[]> {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
 
-    this.http.get(`https://api.spotify.com/v1/search?q=${encodeURIComponent(searchTerm)}&type=track&limit=1`, { headers: headers }).subscribe((response: any) => {
-      const track = response.tracks.items[0];
-      this.artist = track.artists[0].name;
-      this.songName = track.name
-      this.albumCover = track.album.images.find((img: any) => img.width === 300).url;
-    });
+    if (term) {
+      return this.http.get(`https://api.spotify.com/v1/search?q=${encodeURIComponent(term)}&type=track&limit=5`, { headers: headers })
+        .pipe(
+          map((response: any) => response.tracks.items)
+        );
+    } else {
+      return of([]);
+    }
+  }
+
+  fetchSongDetails(song: any) {
+    this.artist = song.artists[0].name;
+    this.songName = song.name
+    this.albumCover = song.album.images.find((img: any) => img.width === 300).url;
+  }
+  
+  displayFn(song: any): string {
+    return song && song.name ? `${song.name} by ${song.artists[0].name}` : '';
   }
 
   trackBySongTitle(index: number, song: any): string {

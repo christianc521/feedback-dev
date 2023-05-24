@@ -40,3 +40,23 @@ textarea:focus, input:focus{
 input::placeholder{
     color: rgb(255, 255, 255, 0.50);
 }
+
+.search-dropdown {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+  
+.search-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-dropdown li:hover {
+    background-color: #ccc;
+}

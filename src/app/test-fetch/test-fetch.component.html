@@ -2,9 +2,17 @@
     <div class="search-component">
         <h1>Daily Challenge: Genre Bender</h1>
         <h4>Share a song from a genre you don't typically listen to, but you enjoy.</h4>
-        <input type="text" class="searchbar" placeholder="Search for a song" [(ngModel)]="searchTerm">
-        <button (click)="fetchSongDetails(searchTerm)">Search</button>
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Search for a song" matInput [matAutocomplete]="auto" [formControl]="searchCtrl">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="fetchSongDetails($event.option.value); searchCtrl.setValue('')">
+              <mat-option *ngFor="let song of searchResults$ | async" [value]="song">
+                {{ song.name }} by {{ song.artists[0].name }}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>  
         <button (click)="addSongToList()">Add to list</button>
+        
+
         <div *ngIf="artist && albumCover">
             <div class="track-container">
                 <img [src]="albumCover" alt="Album Cover" class="album-cover" />
