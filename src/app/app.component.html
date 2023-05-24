@@ -2,15 +2,14 @@
   <img src="assets/logo.png" class="logo">
 </div>
 <div *ngIf = "!account" style="text-align:center">
-<p> Login</p>
+<h1> Login</h1>
 
-<input type="text" placeholder="Email" [(ngModel)]="email">
-<br>
-<br>
-<input type="password" placeholder="Password" [(ngModel)]="password">
+<div class="login-card">
+  <input type="text" class="text-field" placeholder="Email" [(ngModel)]="email">
+  <input type="password" class="text-field" placeholder="Password" [(ngModel)]="password">
+  <button (click)="signIn()">Sign-In</button>
+</div>
 
-
-<button (click)="signIn()">Sign-In</button>
 </div>
 
 
