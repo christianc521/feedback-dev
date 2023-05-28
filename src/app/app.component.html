@@ -1,18 +1,32 @@
 <div style="text-align:center">
   <img src="assets/logo.png" class="logo">
 </div>
-<div *ngIf = "!account" style="text-align:center">
-<h1> Login</h1>
 
-<div class="login-card">
+
+<div *ngIf = "!account" style="text-align:center">
+
+<div *ngIf = "!create" class="login-card">
+  <h1>Login</h1>
   <input type="text" class="text-field" placeholder="Email" [(ngModel)]="email">
   <input type="password" class="text-field" placeholder="Password" [(ngModel)]="password">
-  <button (click)="signIn()">Sign-In</button>
+  <button (click)="signIn()">Sign In</button>
+  <br>
+  <button style="background-color: #d94f04;" (click)="createButton()">Create an Account</button>
 </div>
 
+<div *ngIf = "create" class="login-card">
+  <h1> Create An Account</h1>
+  <input type="text" class="text-field" placeholder="Email" [(ngModel)]="email">
+  <input type="password" class="text-field" placeholder="Password" [(ngModel)]="password">
+  <input type="password" class="text-field" placeholder="Confirm Password" [(ngModel)]="passwordConfirm">
+
+  <button style= "background-color: #d94f04;" (click)="createAccount()">Create Account</button>
+</div>
 </div>
 
-
+<div *ngIf = account style="text-align: right;">
+  <p> logged in as: {{this.email}}</p>
+</div>
 <nav *ngIf = "account">
   <!-- <a routerLink="" routerLinkActive="active">Login </a> -->
   <a routerLink="/fetch" routerLinkActive="active">Home </a>

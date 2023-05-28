@@ -25,9 +25,8 @@ export class AuthenticationService {
   
 
   createAccount(email: string, password : string, confirmedPass : string){
-    this.fireauth.createUserWithEmailAndPassword(email,password).then ( () => {
-      localStorage.setItem('token','true');
-      this.router.navigate(['/fetch']);
+    return this.fireauth.createUserWithEmailAndPassword(email,password).then ( () => {
+      alert('Account Created');
     }, err => {
       alert('Incorrect Username or Password');
       this.router.navigate(["/"])

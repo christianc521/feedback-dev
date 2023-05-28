@@ -10,10 +10,12 @@ export class AppComponent {
   title = 'feedback-dev';
   account = false;
   credentials: string  = "";
+  create = false;
 
   constructor(public auth: AuthenticationService) { }
   email: string = ""
   password: string = ""
+  passwordConfirm: string = ""
 
 // test account (
 // email: torecat275@dekaps.com
@@ -26,6 +28,24 @@ signIn() {
   });
 }
 
+createButton(){
+  this.create = true;
+}
+
+createAccount(){
+  if(this.password == this.passwordConfirm){
+    this.auth.createAccount(this.email, this.password,this.passwordConfirm).then(() => {
+      this.create = false;
+      this.password = "";
+
+    })
+  }else{
+    alert("Passwords Don't Match")
+    this.password = "";
+    this.passwordConfirm = "";
+  }
+  
+  }
 
   status(){
     this.account = this.auth.isLoggedin;
