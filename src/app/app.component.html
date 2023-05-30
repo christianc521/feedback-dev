@@ -9,9 +9,9 @@
   <h1>Login</h1>
   <input type="text" class="text-field" placeholder="Email" [(ngModel)]="email">
   <input type="password" class="text-field" placeholder="Password" [(ngModel)]="password">
-  <button (click)="signIn()">Sign In</button>
-  <br>
-  <button style="background-color: #d94f04;" (click)="createButton()">Create an Account</button>
+  <button style="height: 25px;font-size: 18px;" (click)="signIn()">Sign In</button>
+  <h2>OR</h2>
+  <button style="background-color: #d94f04; height: 25px;font-size: 18px;" (click)="createButton()">Create an Account</button>
 </div>
 
 <div *ngIf = "create" class="login-card">
@@ -20,13 +20,18 @@
   <input type="password" class="text-field" placeholder="Password" [(ngModel)]="password">
   <input type="password" class="text-field" placeholder="Confirm Password" [(ngModel)]="passwordConfirm">
 
-  <button style= "background-color: #d94f04;" (click)="createAccount()">Create Account</button>
+  <button style= "height: 25px;font-size: 18px; background-color: #d94f04;" (click)="createAccount()">Create Account</button>
+  <br>
+  <button style="height: 25px; font-size: 18px;" (click)="this.create = false">Go Back</button>
+
 </div>
 </div>
 
-<div *ngIf = account style="text-align: right;">
-  <p> logged in as: {{this.email}}</p>
+<div  *ngIf = account class="accStatus">
+  <p> logged in as: {{this.storedEmail}}</p>
+  <button style="background-color: #d94f04; width: 80%; height: 80%; align-self: center;" (click)="signOut()">Sign Out</button>
 </div>
+<br>
 <nav *ngIf = "account">
   <!-- <a routerLink="" routerLinkActive="active">Login </a> -->
   <a routerLink="/fetch" routerLinkActive="active">Home </a>

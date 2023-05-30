@@ -7,6 +7,7 @@ nav {
     width: 100%;
     background-color: #555;
     overflow: auto;
+    margin-top: 10px;
   }
   
 nav a {
@@ -47,3 +48,18 @@ textarea:focus, input:focus{
 ::placeholder{
   color: rgba(255, 255, 255, 0.493);
 } 
+
+.accStatus{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-left: 80%;
+  height: 3%;
+}
+.accStatus.p{
+  display: grid;
+  text-align: center;
+}
+.accStatus.btn{
+  display: grid;
+  align-self: center;
+}
