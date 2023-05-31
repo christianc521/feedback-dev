@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .search-component {
@@ -8,18 +8,26 @@
     padding-inline: 2vw;
 }
 .song-list {
+    margin-left: 20%;
     width: 60%; /* you can adjust this as per your needs */
     padding-inline: 2vw;
 }
 
 .track-container {
     display: flex;
+    padding: 1%;
 }
 
 .album-cover {
     width: 100px;
     height: 100px;
     object-fit: cover;
+    padding-right: 1%;
+}
+
+textarea{
+    resize: none;
+    font-size: 12pt;
 }
 
 .searchbar {
