@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+body {
+    text-align: center;
+}
+p {
+    font-size: 20px;
+    padding: 30px;
+}
+.word{
+    margin-right: 45px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #FFFFFF;
+    font-size: 20px;
+}
