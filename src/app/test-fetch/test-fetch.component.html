@@ -10,7 +10,7 @@
               </mat-option>
             </mat-autocomplete>
         </mat-form-field>  
-        <button (click)="addSongToList()">Add to list</button>
+        <button style="margin-left: 10px; padding: 10px;" (click)="addSongToList()">Add to list</button>
         
 
         <div *ngIf="artist && albumCover">
@@ -22,6 +22,7 @@
                 </div>
             </div>
         </div>
+        <textarea rows="10" cols="40" placeholder="add your description"></textarea>
     </div>
     <div class="song-list">
         <h2>Song List</h2>

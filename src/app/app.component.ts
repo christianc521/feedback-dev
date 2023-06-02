@@ -9,7 +9,7 @@ import { AuthenticationService } from './authentication.service';
 export class AppComponent {
   title = 'feedback-dev';
   account = false;
-  credentials: string  = "";
+  storedEmail: string  = "";
   create = false;
 
   constructor(public auth: AuthenticationService) { }
@@ -24,8 +24,15 @@ export class AppComponent {
 signIn() {
   this.auth.login(this.email, this.password).then(() => {
     this.status();
-    this.credentials = this.email
+    this.storedEmail = this.email
+    this.password = "";
+    this.email = "";
   });
+}
+
+signOut(){
+  this.auth.signOut;
+  this.account = false;
 }
 
 createButton(){

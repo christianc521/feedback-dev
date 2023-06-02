@@ -23,6 +23,11 @@ export class AuthenticationService {
     });
   }
   
+  signOut(){
+    return this.fireauth.signOut().then(() => {
+      this.router.navigate(['/'])
+    })
+  }
 
   createAccount(email: string, password : string, confirmedPass : string){
     return this.fireauth.createUserWithEmailAndPassword(email,password).then ( () => {
