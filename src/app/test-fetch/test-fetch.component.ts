@@ -23,7 +23,7 @@ export class TestFetchComponent implements OnInit {
   clientId = '2ee3e6910a654dac86de2886c9aecde1';
   clientSecret = '78e8b2b04c1e458487260a6063202577';
   description: any;
-  userId: string; // Added userId property
+  userId: string;
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) {
     this.getAccessToken();
@@ -39,8 +39,8 @@ export class TestFetchComponent implements OnInit {
       switchMap((term) => this.search(term))
     );
 
-    this.userId = localStorage.getItem('userId'); // Retrieve the user ID from local storage
-    this.retrieveAnthems(); // Retrieve the anthems
+    this.userId = localStorage.getItem('userId');
+    this.retrieveAnthems();
   }
 
   getAccessToken() {

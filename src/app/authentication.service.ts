@@ -33,14 +33,14 @@ export class AuthenticationService {
             .then((querySnapshot) => {
               if (!querySnapshot.empty) {
                 const userId = querySnapshot.docs[0].id;
-                localStorage.setItem('userId', userId); // Store the user ID
+                localStorage.setItem('userId', userId);
               } else {
                 throw new Error('User not found');
               }
               localStorage.setItem('token', 'true');
               this.isLoggedin = true;
               console.log('logged in');
-              this.router.navigate(['/fetch']); // Switch to the fetch component
+              this.router.navigate(['/fetch']);
             });
         } else {
           throw new Error('User not found');
@@ -64,14 +64,13 @@ export class AuthenticationService {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
-          const userId = this.firestore.createId(); // Generate auto-generated ID
+          const userId = this.firestore.createId();
           const userData = {
             userId: userId,
             email: user.email,
-            password: '', // Do not store the password in plaintext
+            password: '',
           };
 
-          // Create user document in Firestore with custom and auto-generated IDs
           return this.firestore.collection('users').doc(userId).set(userData);
         } else {
           throw new Error('User not found');
