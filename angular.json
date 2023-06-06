@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "feedback-dev:build:production",
+            "firebaseProject": "feedback-db-35b42",
+            "firebaseHostingSite": "feedback-db-35b42"
+          }
         }
       }
     }

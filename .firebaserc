@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "feedback-db-35b42": {
+      "hosting": {
+        "feedback-dev": [
+          "feedback-db-35b42"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "feedback-db-35b42"
+  }
+}
