@@ -142,7 +142,7 @@ export class TestFetchComponent implements OnInit {
     }
 
     this.firestore
-      .collection('anthems', (ref) => ref.where('userId', '==', userId))
+      .collection('anthems')
       .snapshotChanges()
       .pipe(
         switchMap((snaps) =>
@@ -185,5 +185,6 @@ export class TestFetchComponent implements OnInit {
             description: song.description,
           }));
       });
+  this.songs = this.songs.reverse();
   }
 }
